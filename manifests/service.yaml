@@ -21,7 +21,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: a1b7563a0858f4f71b48c713a5de8c20-991979942.us-east-1.elb.amazonaws.com
+    - host: a30e8ad80d7ce496f87c317e39919031-393841883.us-east-1.elb.amazonaws.com
       http:
         paths:
           - path: /deportista
