@@ -65,12 +65,19 @@ class DynamoDbDeportista(DynamoDbInterface):
     def insert_item(self,deportista: DeportistaModel):
         item = {
             "id_usuario": {'S':  deportista.id_usuario },
+            "nombre": {'S': deportista.nombre },
+            "apellido": {'S': deportista.apellido },
+            "tipo_identificacion": {'S': deportista.tipo_identificacion },
+            "numero_identificacion": {'S': deportista.numero_identificacion },
             'genero': {'S': deportista.genero },
             'edad': {'N': str(deportista.edad)},
             'peso_inicial': {'N': str(deportista.peso_inicial)},
             'peso_actual': {'N': str(deportista.peso_actual)},
             'altura': {'N': str(deportista.altura)},
+            'pais_recidencia': {'S': deportista.pais_recidencia},
+            'ciudad_recidencia': {'S': deportista.ciudad_recidencia},
             'deporte_practicar': {'S': deportista.deporte_practicar},
+            'plan': {'S': deportista.plan}, # 'Gratuito', 'Intermedio', 'Premium
             'fecha_creacion': {'S': str(deportista.fecha_creacion)}  # Datetime conversion
             
             # Puedes agregar más atributos según la definición de tu tabla
@@ -96,16 +103,23 @@ class DynamoDbDeportista(DynamoDbInterface):
         
         # Extrae los valores de cada campo
         id_usuario = item['id_usuario']['S']
+        nombre = item['nombre']['S']
+        apellido = item['apellido']['S']
+        tipo_identificacion = item['tipo_identificacion']['S']
+        numero_identificacion = item['numero_identificacion']['S']
         genero = item['genero']['S']
         edad = int(item['edad']['N'])
         peso_inicial = float(item['peso_inicial']['N'])
         peso_actual = float(item['peso_actual']['N'])
         altura = float(item['altura']['N'])
+        pais_recidencia = item['pais_recidencia']['S']
+        ciudad_recidencia = item['ciudad_recidencia']['S']
         deporte_practicar = item['deporte_practicar']['S']
+        plan = item['plan']['S']
         fecha_creacion = item['fecha_creacion']['S']
 
         # Crea una instancia de la clase Entrenamiento
-        deportista = DeportistaModel(id_usuario,genero,edad,peso_inicial, peso_actual, altura,deporte_practicar, fecha_creacion)
+        deportista = DeportistaModel(id_usuario,nombre,apellido,tipo_identificacion,numero_identificacion,genero,edad,peso_inicial, peso_actual, altura,pais_recidencia,ciudad_recidencia,deporte_practicar, plan, fecha_creacion)
 
         return deportista
     
