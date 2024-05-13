@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, Blueprint
 from ..commands.create_deportista import CreateDeportista
 from ..commands.get_deportista import GetDeportista
 from ..commands.reset import Reset
+from ..commands.update_plan_deportista import UpdatePlanDeportista
 
 deportista_blueprint = Blueprint('deportista', __name__)
 
@@ -14,6 +15,12 @@ def create():
 def show(id):
     """ Authenticate(auth_token()).execute() """
     deportista = GetDeportista(id).execute() 
+    return jsonify(deportista)
+
+@deportista_blueprint.route('/deportista/<id>', methods = ['PATCH'])
+def actualizar_plan(id):
+    """ Authenticate(auth_token()).execute() """
+    deportista = UpdatePlanDeportista(id,request.get_json()).execute() 
     return jsonify(deportista)
 
 @deportista_blueprint.route('/deportista/ping', methods = ['GET'])

@@ -123,6 +123,27 @@ class DynamoDbDeportista(DynamoDbInterface):
 
         return deportista
     
+    def update_plan(self, id_usuario, new_plan):
+        key = {
+            'id_usuario': {'S': str(id_usuario) }  # Clave de búsqueda
+        }
+        update_expression = "SET #p = :val"
+        expression_attribute_names = {
+            '#p': 'plan'
+        }
+        expression_attribute_values = {
+            ':val': {'S': new_plan}
+        }
+        response = self.dynamodb.update_item(
+            TableName=self.table_name,
+            Key=key,
+            UpdateExpression=update_expression,
+            ExpressionAttributeNames=expression_attribute_names,
+            ExpressionAttributeValues=expression_attribute_values
+        )
+        print('Plan actualizado correctamente.')
+        return response
+    
     def tablaExits(self,name):
         try:
             response = self.dynamodb.describe_table(TableName=name)
