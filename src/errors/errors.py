@@ -73,3 +73,10 @@ class InvalidParams(ApiError):
 class SportmanNotFoundError(ApiError):
     code = 404
     description = "Sportman does not exist"
+    
+class ExeptionCognitoCustomError(ApiError):
+    code = 500
+    description = "Error exeption"
+    def __init__(self, status_code, mensaje):
+        self.code = status_code
+        self.description = mensaje
