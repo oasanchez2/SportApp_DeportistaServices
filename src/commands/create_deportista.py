@@ -13,8 +13,9 @@ class CreateDeportista(BaseCommannd):
   def execute(self):
     try:
       
-      posted_deportista = DeportistaModel(self.data['id_usuario'],self.data['genero'], self.data['edad'],  self.data['peso_inicial'],
-                                           self.data['peso_inicial'],self.data['altura'],self.data['deporte_practicar'],datetime.now())
+      posted_deportista = DeportistaModel(self.data['id_usuario'],self.data["nombre"], self.data["apellido"], self.data['tipo_identificacion'], self.data['numero_identificacion'],
+                                          self.data['genero'], self.data['edad'],  self.data['peso_inicial'], self.data['peso_inicial'],self.data['altura'],
+                                          self.data['pais_recidencia'], self.data['ciudad_recidencia'],self.data['deporte_practicar'], '', datetime.now())
       
       print(posted_deportista)
       
