@@ -31,8 +31,10 @@ class DeportistaModel:
     peso_inicial: float
     peso_actual: float
     altura: float
-    pais_recidencia: str
-    ciudad_recidencia: str
+    pais_residencia: str
+    pais_nacimiento: str
+    ciudad_nacimiento: str
+    ciudad_residencia: str
     deporte_practicar: str
     plan: Planes
     fecha_creacion: datetime
