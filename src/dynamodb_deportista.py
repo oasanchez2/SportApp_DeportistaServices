@@ -74,8 +74,10 @@ class DynamoDbDeportista(DynamoDbInterface):
             'peso_inicial': {'N': str(deportista.peso_inicial)},
             'peso_actual': {'N': str(deportista.peso_actual)},
             'altura': {'N': str(deportista.altura)},
-            'pais_recidencia': {'S': deportista.pais_recidencia},
-            'ciudad_recidencia': {'S': deportista.ciudad_recidencia},
+            'pais_residencia': {'S': deportista.pais_residencia},
+            'ciudad_residencia': {'S': deportista.ciudad_residencia},
+            'pais_nacimiento': {'S': deportista.pais_nacimiento},
+            'ciudad_nacimiento': {'S': deportista.ciudad_nacimiento},
             'deporte_practicar': {'S': deportista.deporte_practicar},
             'plan': {'S': deportista.plan}, # 'Gratuito', 'Intermedio', 'Premium
             'fecha_creacion': {'S': str(deportista.fecha_creacion)}  # Datetime conversion
@@ -112,14 +114,16 @@ class DynamoDbDeportista(DynamoDbInterface):
         peso_inicial = float(item['peso_inicial']['N'])
         peso_actual = float(item['peso_actual']['N'])
         altura = float(item['altura']['N'])
-        pais_recidencia = item['pais_recidencia']['S']
-        ciudad_recidencia = item['ciudad_recidencia']['S']
+        pais_residencia = item['pais_recidencia']['S']
+        ciudad_residencia = item['ciudad_recidencia']['S']
         deporte_practicar = item['deporte_practicar']['S']
+        pais_nacimiento = item['pais_nacimiento']['S']
+        ciudad_nacimiento = item['ciudad_nacimiento']['S']
         plan = item['plan']['S']
         fecha_creacion = item['fecha_creacion']['S']
 
         # Crea una instancia de la clase Entrenamiento
-        deportista = DeportistaModel(id_usuario,nombre,apellido,tipo_identificacion,numero_identificacion,genero,edad,peso_inicial, peso_actual, altura,pais_recidencia,ciudad_recidencia,deporte_practicar, plan, fecha_creacion)
+        deportista = DeportistaModel(id_usuario,nombre,apellido,tipo_identificacion,numero_identificacion,genero,edad,peso_inicial, peso_actual, altura,pais_residencia,pais_nacimiento,ciudad_nacimiento,ciudad_residencia,deporte_practicar, plan, fecha_creacion)
 
         return deportista
     
