@@ -114,8 +114,8 @@ class DynamoDbDeportista(DynamoDbInterface):
         peso_inicial = float(item['peso_inicial']['N'])
         peso_actual = float(item['peso_actual']['N'])
         altura = float(item['altura']['N'])
-        pais_residencia = item['pais_recidencia']['S']
-        ciudad_residencia = item['ciudad_recidencia']['S']
+        pais_residencia = item['pais_residencia']['S']
+        ciudad_residencia = item['ciudad_residencia']['S']
         deporte_practicar = item['deporte_practicar']['S']
         pais_nacimiento = item['pais_nacimiento']['S']
         ciudad_nacimiento = item['ciudad_nacimiento']['S']
